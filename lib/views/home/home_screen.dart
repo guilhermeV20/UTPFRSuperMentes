@@ -26,6 +26,13 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 200,
             height: 200,
           ),
+          const Text(
+            "Super Mentes",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           const SizedBox(height: 32),
           SimpleButton(
             text: "Jogar",

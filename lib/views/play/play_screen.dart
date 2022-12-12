@@ -54,6 +54,7 @@ class _PlayScreenState extends State<PlayScreen> {
   void select(int index) {
     setState(() {
       var p = player[0];
+      botMessage = null;
       if (!playerTurn) {
         botMessage = "Eu escolho ${settings.collection.attributes[index]}";
       } else if (p.curiosities.isNotEmpty) {
@@ -119,11 +120,13 @@ class _PlayScreenState extends State<PlayScreen> {
         player.add(attack!);
         player.add(defense!);
         playerTurn = true;
+        botMessage = "Você ganhou!";
         print("Player wins");
       } else {
         computer.add(attack!);
         computer.add(defense!);
         playerTurn = false;
+        botMessage = "Eu ganhei!";
         print("Computer wins");
       }
     } else {
@@ -131,18 +134,19 @@ class _PlayScreenState extends State<PlayScreen> {
         computer.add(attack!);
         computer.add(defense!);
         playerTurn = false;
+        botMessage = "Eu ganhei!";
         print("Computer wins");
       } else {
         player.add(attack!);
         player.add(defense!);
         playerTurn = true;
+        botMessage = "Você ganhou!";
         print("Player wins");
       }
     }
     print("PLayer: ${player.map((c) => c.name).toList()}");
     print("Computer: ${computer.map((c) => c.name).toList()}");
     setState(() {
-      botMessage = null;
       attack = null;
       defense = null;
       attribute = null;
@@ -352,7 +356,14 @@ class _PlayScreenState extends State<PlayScreen> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  if (!playerTurn)
+                  if (playerTurn)
+                    const Text(
+                      "Selecione um atributo para jogar",
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    )
+                  else
                     Center(
                       child: SizedBox(
                         width: 128,
@@ -364,7 +375,7 @@ class _PlayScreenState extends State<PlayScreen> {
                           },
                         ),
                       ),
-                    )
+                    ),
                 ],
               ),
             ),
