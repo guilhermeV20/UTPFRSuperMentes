@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:supermentes/views/credits/rules_screen.dart';
+import 'package:supermentes/views/credits/credits_screen.dart';
 import 'package:supermentes/views/difficult/difficult_screen.dart';
 import 'package:supermentes/views/home/home_screen.dart';
 import 'package:supermentes/views/play/play_screen.dart';
