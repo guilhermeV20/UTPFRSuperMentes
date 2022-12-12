@@ -588,107 +588,117 @@ class _DifficultScreenState extends State<DifficultScreen> {
   @override
   Widget build(BuildContext context) {
     return AppContainer(
-      child: Column(
-        children: [
-          const Text(
-            "Aqui vai o logo",
-          ),
-          const SizedBox(height: 32),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+      padding: EdgeInsets.zero,
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
             children: [
-              SelectButton(
-                text: "Fácil",
-                selected: difficult == Difficult.easy,
-                onPressed: () {
-                  setState(() {
-                    difficult = Difficult.easy;
-                  });
-                },
+              Image.asset(
+                'assets/images/logo.png',
+                width: 200,
+                height: 200,
               ),
-              const SizedBox(width: 16),
-              SelectButton(
-                text: "Médio",
-                selected: difficult == Difficult.medium,
-                onPressed: () {
-                  setState(() {
-                    difficult = Difficult.medium;
-                  });
-                },
+              const SizedBox(height: 32),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SelectButton(
+                    text: "Fácil",
+                    selected: difficult == Difficult.easy,
+                    onPressed: () {
+                      setState(() {
+                        difficult = Difficult.easy;
+                      });
+                    },
+                  ),
+                  const SizedBox(width: 16),
+                  SelectButton(
+                    text: "Médio",
+                    selected: difficult == Difficult.medium,
+                    onPressed: () {
+                      setState(() {
+                        difficult = Difficult.medium;
+                      });
+                    },
+                  ),
+                  const SizedBox(width: 16),
+                  SelectButton(
+                    text: "Difícil",
+                    selected: difficult == Difficult.hard,
+                    onPressed: () {
+                      setState(() {
+                        difficult = Difficult.hard;
+                      });
+                    },
+                  ),
+                ],
               ),
-              const SizedBox(width: 16),
-              SelectButton(
-                text: "Difícil",
-                selected: difficult == Difficult.hard,
+              const SizedBox(height: 32),
+              GridView.count(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                crossAxisCount: 2,
+                childAspectRatio: 0.65,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                children: collections
+                    .map(
+                      (c) => GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            collection = c.id;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: collection == c.id
+                                  ? Colors.blue
+                                  : Colors.black,
+                            ),
+                          ),
+                          child: Column(
+                            children: [
+                              CardBack(collection: c),
+                              Expanded(
+                                child: Center(
+                                  child: Text(
+                                    "${c.name}\n${c.cards.length.toString()} cartas",
+                                    style: TextStyle(
+                                      color: collection == c.id
+                                          ? Colors.blue
+                                          : Colors.black,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    )
+                    .toList(),
+              ),
+              const SizedBox(height: 32),
+              SimpleButton(
+                text: "Começar",
                 onPressed: () {
-                  setState(() {
-                    difficult = Difficult.hard;
-                  });
+                  Navigator.pushNamed(
+                    context,
+                    PlayScreen.routeName,
+                    arguments: GameSettings(
+                      collection:
+                          collections.singleWhere((c) => c.id == collection),
+                      difficult: difficult,
+                    ),
+                  );
                 },
               ),
             ],
           ),
-          const SizedBox(height: 32),
-          GridView.count(
-            shrinkWrap: true,
-            crossAxisCount: 2,
-            childAspectRatio: 0.65,
-            crossAxisSpacing: 16,
-            mainAxisSpacing: 16,
-            children: collections
-                .map(
-                  (c) => GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        collection = c.id;
-                      });
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color:
-                              collection == c.id ? Colors.blue : Colors.black,
-                        ),
-                      ),
-                      child: Column(
-                        children: [
-                          CardBack(collection: c),
-                          Expanded(
-                            child: Center(
-                              child: Text(
-                                "${c.name}\n${c.cards.length.toString()} cartas",
-                                style: TextStyle(
-                                  color: collection == c.id
-                                      ? Colors.blue
-                                      : Colors.black,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                )
-                .toList(),
-          ),
-          const SizedBox(height: 32),
-          SimpleButton(
-            text: "Começar",
-            onPressed: () {
-              Navigator.pushNamed(
-                context,
-                PlayScreen.routeName,
-                arguments: GameSettings(
-                  collection:
-                      collections.singleWhere((c) => c.id == collection),
-                  difficult: difficult,
-                ),
-              );
-            },
-          ),
-        ],
+        ),
       ),
     );
   }
