@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supermentes/shared/buttons.dart';
 import 'package:supermentes/shared/containers.dart';
-import 'package:supermentes/views/credits/rules_screen.dart';
+import 'package:supermentes/views/credits/credits_screen.dart';
 import 'package:supermentes/views/difficult/difficult_screen.dart';
 import 'package:supermentes/views/rules/rules_screen.dart';
 
@@ -20,8 +20,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return AppContainer(
       child: Column(
         children: [
-          const Text(
-            "Aqui vai o logo",
+          const SizedBox(height: 64),
+          Image.asset(
+            'assets/images/logo.png',
+            width: 200,
+            height: 200,
           ),
           const SizedBox(height: 32),
           SimpleButton(
