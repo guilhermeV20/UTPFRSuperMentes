@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class SimpleButton extends StatefulWidget {
   final String text;
   final GestureTapCallback onPressed;
+  final Color color;
 
   const SimpleButton({
     Key? key,
     required this.text,
     required this.onPressed,
+    this.color = Colors.grey,
   }) : super(key: key);
 
   @override
@@ -23,13 +25,13 @@ class _SimpleButtonState extends State<SimpleButton> {
         padding: const EdgeInsets.symmetric(vertical: 16),
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
-          border: Border.all(color: Colors.grey),
+          border: Border.all(color: widget.color),
         ),
         child: Center(
           child: Text(
             widget.text,
-            style: const TextStyle(
-              color: Colors.grey,
+            style: TextStyle(
+              color: widget.color,
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),
