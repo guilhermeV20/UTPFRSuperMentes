@@ -388,7 +388,7 @@ class _PlayScreenState extends State<PlayScreen> {
                                 context: context,
                                 content: ConfirmAttributeSelectModal(
                                     text:
-                                        "${settings.collection.attributes[index]} com valor ${c.getAttributeString(index)}?"),
+                                        "${settings.collection.attributes[index]}: ${c.getAttributeString(index)}"),
                               ) ??
                               false;
                           if (confirm) {
