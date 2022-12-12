@@ -16,45 +16,48 @@ class _CreditsScreenState extends State<CreditsScreen> {
   Widget build(BuildContext context) {
     return AppContainer(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text(
-            "Aqui vai o logo",
+          const SizedBox(height: 64),
+          Image.asset(
+            'assets/images/logo.png',
+            width: 200,
+            height: 200,
           ),
           const SizedBox(height: 32),
-          const Center(
+          const Text(
+            "Créditos",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 16),
+          const Align(
+            alignment: Alignment.centerLeft,
             child: Text(
-              "Créditos",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              "Guilherme Veras Castagnaro Correia - 2048990",
+            ),
+          ),
+          const SizedBox(height: 8),
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "Hugo José Teixeira de Freitas - 1685899",
             ),
           ),
           const SizedBox(height: 16),
           const Text(
-            "Guilherme Veras Castagnaro Correia - 2048990",
-          ),
-          const SizedBox(height: 8),
-          const Text(
-            "Hugo José Teixeira de Freitas - 1685899",
-          ),
-          const SizedBox(height: 16),
-          const Center(
-            child: Text(
-              "2022",
-              style: TextStyle(
-                fontSize: 20,
-              ),
+            "2022",
+            style: TextStyle(
+              fontSize: 20,
             ),
           ),
           const SizedBox(height: 8),
-          const Center(
-            child: Text(
-              "UNIVERSIDADE TECNOLOGICA FEDERAL DO PARANA",
-              style: TextStyle(
-                fontSize: 12,
-              ),
+          const Text(
+            "UNIVERSIDADE TECNOLOGICA FEDERAL DO PARANA",
+            style: TextStyle(
+              fontSize: 12,
             ),
           ),
           const SizedBox(height: 64),

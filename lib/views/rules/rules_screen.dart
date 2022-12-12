@@ -16,19 +16,33 @@ class _RulesScreenState extends State<RulesScreen> {
   Widget build(BuildContext context) {
     return AppContainer(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text(
-            "Aqui vai o logo",
+          const SizedBox(height: 64),
+          Image.asset(
+            'assets/images/logo.png',
+            width: 200,
+            height: 200,
           ),
           const SizedBox(height: 32),
           const Text(
-            "Regras:\n"
-            "Não há empates,\n"
-            "O jogador que tiver menos cartas começará a jogar,\n"
-            "Quando um jogador ficar sem cartas, o jogador que estiver sem cartas perde,\n"
-            "O jogador escolhe um atributo e compara com o da carta do computador, o maior ganha a carta,",
+            "Regras",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
           ),
           const SizedBox(height: 16),
+          const Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              "1. O jogador que tiver menos cartas começará a jogar;\n"
+              "2. Quando um jogador ficar sem cartas, o jogador que estiver sem cartas perde;\n"
+              "3. O jogador escolhe um atributo e compara com o da carta do computador, o maior ganha a carta;\n"
+              "4. Em caso de atributos com valroes iguais a defesa ganha.",
+            ),
+          ),
+          const SizedBox(height: 64),
           SimpleButton(
             text: "Voltar",
             onPressed: () {
