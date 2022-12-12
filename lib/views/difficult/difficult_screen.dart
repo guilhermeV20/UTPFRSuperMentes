@@ -307,7 +307,7 @@ class _DifficultScreenState extends State<DifficultScreen> {
       attributes: [
         "Numero Atômico",
         "Massa Atômica",
-        "Elétrons na Ultima Camada",
+        "Eletrons Livres",
         "Camadas Eletrônicas",
       ],
       cards: [
